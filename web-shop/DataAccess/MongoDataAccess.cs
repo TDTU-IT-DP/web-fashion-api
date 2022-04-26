@@ -3,7 +3,8 @@ namespace web_shop.DataAccess
 {
     public class MongoDataAccess
     {
-        private const string connectionString = "mongodb://localhost:27017";
+        private const string connectionString = "mongodb+srv://Khanhpro1250:khanhpro1250@cluster0.ypxdo.mongodb.net/Shop_fashion?retryWrites=true&w=majority"; // mongodb clound
+        //private const string connectionString = "mongodb://localhost:27017"; //mongodb local
         private const string databaseName = "Shop_fashion";
         private static MongoDataAccess _instance;
         private MongoDataAccess() { }
