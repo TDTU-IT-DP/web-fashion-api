@@ -2,9 +2,6 @@
 using shop.DataAccess;
 using shop.Models;
 
-using MongoDB.Driver;
-using shop.DataAccess;
-using shop.Models;
 
 namespace shop.Helpers.StrategyMethodDataAccess
 {
