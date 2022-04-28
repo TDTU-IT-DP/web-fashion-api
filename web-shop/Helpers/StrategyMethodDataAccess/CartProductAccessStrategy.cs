@@ -3,7 +3,7 @@ using shop.DataAccess;
 using shop.Models;
 
 
-namespace shop.Helpers.StrategyMethodDataAccess
+namespace web_shop.Helpers.StrategyMethodDataAccess
 {
     public class CartProductAccessStrategy : StrategyMethod<productCart>
     {
