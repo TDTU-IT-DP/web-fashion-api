@@ -1,6 +1,6 @@
 ﻿using MongoDB.Driver;
-using shop.DataAccess;
-using shop.Models;
+using web_shop.DataAccess;
+using web_shop.Models;
 
 namespace web_shop.Helpers.StrategyMethodDataAccess
 {

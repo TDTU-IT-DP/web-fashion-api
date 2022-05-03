@@ -1,7 +1,7 @@
 ﻿using MongoDB.Driver;
-using shop.DataAccess;
-using shop.Helpers.FactoryMethodValidate;
-using shop.Models;
+using web_shop.DataAccess;
+using web_shop.Helpers.FactoryMethodValidate;
+using web_shop.Models;
 
 namespace web_shop.Helpers.StrategyMethodDataAccess
 {
@@ -22,7 +22,7 @@ namespace web_shop.Helpers.StrategyMethodDataAccess
             return await userCollection.DeleteOneAsync(a => a.Id == Id);
         }
 
-        public async Task<List<User>> getSearch(string key="")
+        public async Task<List<User>> getSearch(string key = "")
         {
             var userCollecton = db.CollectionToMongo<User>(UserCollection);
             ValidateFactory numberValidate = new NumberValidateFactory();
