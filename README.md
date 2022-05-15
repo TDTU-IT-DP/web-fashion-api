@@ -265,7 +265,7 @@ Giải pháp được đề xuất ở đây là thay thế việc khởi tạo 
   ![image](https://user-images.githubusercontent.com/65171477/168483123-8e7b266b-ffbd-422f-be40-2bc7173bdc68.png)
   
   
-#### Example get product respone
+#### Example get product respones
 ```json
 {
     "code": 0,
