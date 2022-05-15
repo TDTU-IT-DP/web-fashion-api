@@ -238,5 +238,69 @@ Giải pháp được đề xuất ở đây là thay thế việc khởi tạo 
 
 # Chương 4 - Kết luận
 ### Hướng dẫn chạy code
+   *Khởi chạy server:*
+   - Mở Visual Studio 2022 chọn clone project về
+   - Chọn file web-shop.sln và open
+   - Bấm tổ hợp phím Ctrl + Shift + B để build project ( Có thể mất vài phút)
+   -Bấm vào icon run ở thanh công cụ hoặc tô hợp phím ( Ctrl + F5) để run server
+ở local
+
+  *Giao diện tương tác với demo*
+   - link: https://khanhpro1250.github.io/web-fashion/
+### Các api có trong demo
+  *Cart Product*
+  
+  ![image](https://user-images.githubusercontent.com/65171477/168483063-b89d93a1-d67d-4cc6-9c0f-508af521e0c5.png)
+  
+  *Order*
+  
+  ![image](https://user-images.githubusercontent.com/65171477/168483100-764b746e-7058-4f26-a94e-9abd4b1a68d1.png)
+
+  *Product*
+  
+  ![image](https://user-images.githubusercontent.com/65171477/168483110-7635ca99-9e7d-4e61-9954-875356cbfd2b.png)
+
+  *User*
+  
+  ![image](https://user-images.githubusercontent.com/65171477/168483123-8e7b266b-ffbd-422f-be40-2bc7173bdc68.png)
+  
+  
+#### Example get product respone
+```json
+{
+    "code": 0,
+    "message": "Success",
+    "products": [
+        {
+            "id": "62679e2caa0a6994034378f1",
+            "productName": "Nike Air Force 1 '07 LV8",
+            "productId": "nikeAir1'07v8",
+            "typeProduct": "shoes",
+            "price": 3239000,
+            "amount": 100,
+            "discount": 5,
+            "size": "43",
+            "description": "This iteration of our iconic Nike Air Force 1 '07 LV8 has hoops-inspired performance features that provide a comfortable base with flashing-light-activated design details.",
+            "subtitle": "This iteration of our iconic Nike Air Force 1 '07 LV8 has hoops-inspired performance features that provide a comfortable base with flashing-light-activated design details.",
+            "imgLink": "https://res.cloudinary.com/khanh15032001/image/upload/v1650957823/yx94kalc9u6v9s4qllr3.webp"
+        },
+        {
+            "id": "627a8e25cb053cc04871d04e",
+            "productName": "Nike Air Force 1 LV8",
+            "productId": "NAF1LV8",
+            "typeProduct": "shoes",
+            "price": 5000000,
+            "amount": 100,
+            "discount": 5,
+            "size": "43",
+            "description": "A basketball legend turned streetwear icon, the Nike Air Force 1 LV8 returns with a remake of the '82 classic. Still durable, it also has the comfy Air-Sole unit you know and love. This edition pays tribute to our history with \"Nike Athletic Club\" details and early '70s style.",
+            "subtitle": "Colour Shown: Off-Noir/White/Off-Noir/Pink Prime\nStyle: DH9597-003",
+            "imgLink": "https://res.cloudinary.com/khanh15032001/image/upload/v1652198931/lzoi44tfc6wq6ezfea3i.webp"
+        }
+     ]
+}
+
+```
+
 
 
