@@ -1,10 +1,8 @@
-# Web shop fashion api
-
 # Chương 1: Mở đầu
 
 
-### **Giới thiệu ứng dụng**
-### **Yêu cầu ứng dụng (ngôn ngữ viết code, các thư viện hỗ trợ để chạy demo, cài đặt database,...)**
+### 1. **Giới thiệu ứng dụng**
+### 2. **Yêu cầu ứng dụng (ngôn ngữ viết code, các thư viện hỗ trợ để chạy demo, cài đặt database,...)**
 
 # Chương 2: Cơ sở lý thuyết
 
