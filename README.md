@@ -111,6 +111,7 @@ Singleton Pattern là một design pattern:
   - Client phải tìm hiểu khác nhau giữa các Concrete để có thể chọn được phù hợp nhất.
 ### 3.**Factory?**
 3.1. *Factory Method là gì ?*
+
   Factory Method giống như tên gọi thì Pattern này như một nhà máy sẽ sản xuất ra các đối tượng theo yêu cầu. Đây là Pattern thuộc nhóm Creational Design Pattern. Nhiệm vụ của nó quản lý và trả về các đối tượng theo yêu cầu, giúp cho việc khởi tạo đối tượng một cách linh hoạt hơn.
 Một Factory Pattern bao gồm các thành phần cơ bản sau:
   - Super Class: một superclass trong Factory Pattern có thể là một interface, abstract class hay một class thông thường.
@@ -143,6 +144,7 @@ Giải pháp được đề xuất ở đây là thay thế việc khởi tạo 
 ### 4.**Adapter**
 
 4.1. *Adapter pattern là gì ?*
+
   Adapter pattern là một mẫu thiết kế phần mềm, Adapter Pattern nằm trong nhóm Cấu trúc — Structural Pattern — liên quan đến cấu trúc cho toàn hệ thống, tập trung vào các mối quan hệ giữa các thực thể, các component, làm cho chúng tương tác dễ dàng với nhau hơn. Adapter Pattern đóng vai trò trung gian, tương thích cho hệ thống sẵn có đối ứng với các component mới mà không cần phải sửa đổi code, cho phép các interface không liên quan đến nhau có thể làm việc cùng nhau
 4.2.*Cài đặt Adapter Pattern*
   Một Adapter Pattern bao gồm các thành phần cơ bản sau:
@@ -162,6 +164,7 @@ Giải pháp được đề xuất ở đây là thay thế việc khởi tạo 
 
 
 4.3.*Ưu và nhược điểm của Adapter Pattern*
+
   **Ưu điểm**
   - Sử dụng cho dự án một lớp riêng mà không đụng tới những code cũ, hay còn gọi là code gốc 
   - Tăng tính minh bạch và khả năng tái sử dụng của lớp, đóng gói việc triển khai, và khả năng tái sử dụng rất cao. Tính sẵn sàng luôn có. 
@@ -182,10 +185,13 @@ Giải pháp được đề xuất ở đây là thay thế việc khởi tạo 
 # Chương 3: Triển khai ứng dụng
 ### 3.1. **Ứng dụng các pattern (Lý do chọn pattern)**
    3.1.1.*Singleton*
+   
     Tránh tạo quá nhiều thực thể kết nối đến database. Do đó Singleton Pattern áp dụng vào đây thì hợp lý, tất cả chức năng nên sử dụng chung một thực thể kết nối.
    3.1.2.*Strategy*
+   
     Vì trong ứng dụng có các hành vi như thêm , sửa , xóa , và lấy dữ liệu của người dùng và cả sản phẩm. Cả hai đối tượng người dùng đều có các hành vi trên những việc xử lý logic trong thời gian chạy  thì khác nhau. Nhằm mục đích đóng gói các phương thức trên để tiện sử dụng và chỉnh sửa trong tương lai vì những hành vì này thường rất dễ thay đổi trong quá trình phát triển. Nên dùng Strategy Method ở đây là hợp lý.
    3.1.3. *Factory*
+   
   - Khi muốn xác thực dữ liệu khi chưa biết trước tất cả các loại dữ liệu sẽ được xác thực. Để khi mở rộng sau này không cần phải thay đổi code khi thêm các loại dữ liệu cần xác thực khác.
   - Ngoài ra giúp giảm sự phụ thuộc và giúp chương trình độc lập với những lớp cụ thể mà khi tạo một đối tượng code ở phía client không bị ảnh hưởng khi thay đổi logic ở factory hoặc subclass.
   - Thông nhất về naming convention ( quy tắc đặt tên) giúp cho các thành viên trong nhóm có thể hiểu được cấu trúc của method này một cách dễ dàng hơn.
@@ -195,7 +201,9 @@ Giải pháp được đề xuất ở đây là thay thế việc khởi tạo 
   ![image](https://user-images.githubusercontent.com/65171477/168467115-f625b164-63f5-4090-bbd0-b1d7ae12007e.png)
 
   Ví dụ về chức năng đăng kí tài khoản:
+  
     Ban đầu chỉ cần xác thực 2 thông tin email và số điện thoại. Nhưng sau này khi mở rộng hệ thống ta có thể thêm một vài trường dữ liệu khác cần được xác thực như hình ảnh , CMND,... Thì ta không cần sửa code ban đầu mà chỉ cẩn bổ sung thêm các subclass ( ví dụ CMNDValidateFactory.cs …) cần dùng để xác thực và implement vào ValidateFactory method.
+    
     3.1.4. *Adapter*
     Khi gửi dữ liệu từ phía client lên server thì dữ liệu cần được thêm vào chưa tương thích với database do khác định dạng dữ liệu. Vì vậy cần phải chuyển đổi dữ liệu về đúng định dạng dữ liệu trong database mới thêm vào được. Do có nhiều nơi cần phải chuyển đổi dữ liệu và để tránh mất thời gian chỉnh sửa từng nơi khi định dạng trong database thay đổi thì sử dụng Adapter method ở đây là hợp lí nhất.
     VD:
