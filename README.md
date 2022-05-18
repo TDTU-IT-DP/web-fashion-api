@@ -110,6 +110,7 @@ Singleton Pattern là một design pattern:
   - Không phù hợp với chương trình chỉ có một vài thuật toán mà chúng hiếm khi thay đổi.
   - Client phải tìm hiểu khác nhau giữa các Concrete để có thể chọn được phù hợp nhất.
 ### 3.**Factory?**
+
 3.1. *Factory Method là gì ?*
 
   Factory Method giống như tên gọi thì Pattern này như một nhà máy sẽ sản xuất ra các đối tượng theo yêu cầu. Đây là Pattern thuộc nhóm Creational Design Pattern. Nhiệm vụ của nó quản lý và trả về các đối tượng theo yêu cầu, giúp cho việc khởi tạo đối tượng một cách linh hoạt hơn.
@@ -191,6 +192,7 @@ Giải pháp được đề xuất ở đây là thay thế việc khởi tạo 
    3.1.2.*Strategy*
    
    Vì trong ứng dụng có các hành vi như thêm , sửa , xóa , và lấy dữ liệu của người dùng và cả sản phẩm. Cả hai đối tượng người dùng đều có các hành vi trên những việc xử lý logic trong thời gian chạy  thì khác nhau. Nhằm mục đích đóng gói các phương thức trên để tiện sử dụng và chỉnh sửa trong tương lai vì những hành vì này thường rất dễ thay đổi trong quá trình phát triển. Nên dùng Strategy Method ở đây là hợp lý.
+   
    3.1.3. *Factory*
    
   - Khi muốn xác thực dữ liệu khi chưa biết trước tất cả các loại dữ liệu sẽ được xác thực. Để khi mở rộng sau này không cần phải thay đổi code khi thêm các loại dữ liệu cần xác thực khác.
@@ -206,6 +208,7 @@ Giải pháp được đề xuất ở đây là thay thế việc khởi tạo 
    Ban đầu chỉ cần xác thực 2 thông tin email và số điện thoại. Nhưng sau này khi mở rộng hệ thống ta có thể thêm một vài trường dữ liệu khác cần được xác thực như hình ảnh , CMND,... Thì ta không cần sửa code ban đầu mà chỉ cẩn bổ sung thêm các subclass ( ví dụ CMNDValidateFactory.cs …) cần dùng để xác thực và implement vào ValidateFactory method.
     
    3.1.4. *Adapter*
+   
    Khi gửi dữ liệu từ phía client lên server thì dữ liệu cần được thêm vào chưa tương thích với database do khác định dạng dữ liệu. Vì vậy cần phải chuyển đổi dữ liệu về đúng định dạng dữ liệu trong database mới thêm vào được. Do có nhiều nơi cần phải chuyển đổi dữ liệu và để tránh mất thời gian chỉnh sửa từng nơi khi định dạng trong database thay đổi thì sử dụng Adapter method ở đây là hợp lí nhất.
     VD:
     Khi người dùng đăng kí tài khoản thì các dữ liệu gửi lên trong RegisterData có các cột như sau:
@@ -224,6 +227,7 @@ Giải pháp được đề xuất ở đây là thay thế việc khởi tạo 
     Nhiệm vụ của Adapter Method là chuyển đổi đối tượng RegisterData trở thành đối tượng User để đảm bảo rằng đối tượng RegisterData từ người dùng gửi lên vẫn được xử lí
 
 ### 3.2. **Sơ đồ lớp**
+
   3.2.1. *Singleton*
   
   ![image](https://user-images.githubusercontent.com/65171477/168467152-dbf4bd95-ec37-499b-b961-bb35182b4016.png)
