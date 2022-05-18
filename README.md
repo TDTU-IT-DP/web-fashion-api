@@ -120,6 +120,7 @@ Một Factory Pattern bao gồm các thành phần cơ bản sau:
   - Factory Class: một class chịu trách nhiệm khởi tạo các đối tượng subclass dựa theo tham số đầu vào. Lưu ý: lớp này là Singleton hoặc cung cấp một public static method cho việc truy xuất và khởi tạo đối tượng. Factory class sử dụng if-else hoặc switch-case để xác định class con đầu ra.
 
 3.2.*Áp dụng thực tế*
+
   Khi xây dựng một ứng dụng về tự động hóa, ban đầu chỉ xây dựng vận chuyển hàng hóa với xe tải. Tuy nhiên, sau một thời gian phát triển công ty mở rộng thêm vận chuyển hành khách với xe Khách. Khi mới xây dựng, ứng dụng chỉ áp dụng cho vận chuyển hàng hóa nên bây giờ code đã không phù hợp vì loại phương tiện lúc này đã có thêm xe khách. Nếu như trong tương lai công ty phát triển thêm nhiều phương tiện thì code lại phát sinh nhiều vấn đề khác. Đó là một thách thức lớn khi xây dựng ứng dụng.
 Giải pháp được đề xuất ở đây là thay thế việc khởi tạo đối tượng trong constructor bởi từ khóa new object bằng việc gọi một phương thức đặc biệt gọi là factory. Ta thấy một class con đều có thể ghi đè phương thức tạo object, điều này giúp tạo nhiều object với từng nhu cầu khác nhau. Điều này giúp dễ dàng thêm các object về sau mà không cần thay đổi code.
   ![image](https://user-images.githubusercontent.com/65171477/168467049-b98a5b0d-f0f4-40fa-8404-526c45726530.png)
