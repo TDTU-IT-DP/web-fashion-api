@@ -2,7 +2,157 @@
 
 
 ### 1. **Giới thiệu ứng dụng**
-### 2. **Yêu cầu ứng dụng (ngôn ngữ viết code, các thư viện hỗ trợ để chạy demo, cài đặt database,...)**
+
+  Đề tài tập trung xây dựng một website quản lí cửa hàng thời trang online, hệ thống được sử dụng nhằm mục đích tạo một trang web mua sắm các mặt hàng thời trang như giày, dép, trang sức,…để phục vụ cho khách hàng. Ngoài ra hệ thống còn có khả năng cung cấp các chức năng quản lí dành cho chủ cửa hàng. Hệ thống đáp ứng đầy đủ các chức năng cơ bản của một website bán hàng là mua sản phẩm, đặt hàng, thêm hàng vào giỏ, thanh toán và các chức năng quản lí tài khoản, quản lí sản phẩm,…
+Website được viết bằng ASP.NET Core Web API (C#) sử dụng .NET Framework (6.0) và database được sử dụng là MongoDB. Ngoài ra trang web còn được áp dụng một số Design Pattern như Singleton, Adapter, Factory và Strategy để tối ưu hóa, tái sử dụng và giải quyết các vấn liên quan đến hướng đối tượng OOP một cách tốt nhất thay vì phải tự đi tìm giải pháp.
+
+
+
+
+### 2. **Các vấn đề nếu không áp dụng pattern**
+
+  - *Singleton*
+
+  Có nhiều đối tượng chúng ta chỉ cần một trong số chúng: ví dụ như thread pools, caches, dialog boxes, đối tượng xử lý preferences và cài đặt registry, đối tượng được sử dụng để ghi log và các đối tượng đóng vai trò là trình điều khiển thiết bị cho các thiết bị như máy in và card đồ họa…. Trong thực tế, đối với nhiều loại đối tượng này, nếu chúng ta khởi tạo nhiều hơn một đối tượng chúng ta sẽ gặp phải tất cả các vấn đề như hành vi chương trình không chính xác, lạm dụng tài nguyên hoặc kết quả không nhất quán. Ví dụ như trong 1 văn phòng, có rất nhiều máy tính kết nối đến 1 máy in. Mỗi máy tính có 1 trình điều khiển máy in và ra lệnh cho máy in thông qua trình điều khiển này. Nếu các trình điều khiển máy in này hoạt động riêng rẽ thì có khả năng 2 máy tính ra lệnh in cùng 1 lúc sẽ làm cho các tài liệu bị in chồng chéo.
+  Vậy ta cần phải có một trình điều khiển là DUY NHẤT và được các máy tính cùng sử dụng => Singleton được sử dụng để giải quyết.
+    
+  Phân tích:
+  
+  Nếu ta tạo ra một đối tượng theo cách thông thường:
+  
+  ![image](https://user-images.githubusercontent.com/65171477/169544136-8e1e4ab7-b809-4d45-bf37-0cd72660a8c8.png)
+
+Tuy nhiên thì những đối tượng khác đều có thể khởi tạo đối tượng MyClass thêm một lần nữa nhưng chỉ khi nó là một public class. 
+
+Giả sử, nếu nó không phải là một public class, thì ta có thể tạo đối tượng MyClass thêm một lần nữa hay không? => Câu trả lời là vẫn có thể tuy nhiên thì chỉ các lớp trong cùng một package mới có thể khởi tạo nó.
+
+Ta thử viết như thế này:
+
+![image](https://user-images.githubusercontent.com/65171477/169544719-0682f468-e2f5-43f9-80f2-f876cf0bcd4a.png)
+
+  Nếu ta viết như thế này thì các đối tượng khác không thể khởi tạo nó bởi vì nó có một private constructor, nơi duy nhất có thể gọi được nó chính là bên trong lớp MyClass nhưng điều đó gần như không có ý nghĩa gì.
+  
+Bên trong lớp MyClass sẽ làm được điều này:
+
+![image](https://user-images.githubusercontent.com/65171477/169544809-e9403d17-7e9c-4f49-848d-cd4cb7d24db2.png)
+
+  Ta sẽ tạo thêm phương thức getMyClass(). Nhưng cho dù có phương thức getMyClass() đi nữa cũng không thể đem ra khỏi lớp này được, bởi vì muốn sử dụng thì phải tạo instance mới và gọi instance.getMyClass(), nhưng không thể tạo được biến instance. Đây là một vấn đề về con gà và quả trứng: Tôi có thể sử dụng constructor từ một đối tượng thuộc loại MyClass, nhưng tôi không bao giờ có thể khởi tạo đối tượng đó vì không đối tượng nào khác có thể sử dụng “new MyClass()”. 
+  
+  Vậy làm thế nào để tạo ra một đối tượng duy nhất?
+  
+  ![image](https://user-images.githubusercontent.com/65171477/169544934-a2e69e3b-5b0f-4004-9ffc-d0a4f776211f.png)
+  
+  Vậy nếu ta tạo ra thêm một static method getInstance() hay nói cách khác, nó là một CLASS method (ý nói phương thức này thuộc về class, không phải thuộc về instance). Bạn cần sử dụng tên lớp để tham chiếu một static method. Bây giờ ta có thể tạo một MyClass duy nhất thông qua Singleton pattern.
+  
+ - *Strategy*
+
+  Là một pattern thuốc nhóm Behavior, Strategy giúp trừu tượng hóa những hành vi như behavior, method, function của một đối tượng bằng cách cài đặt vào nhưỡng lớp khác nhau. Strategy thường được áp dụng nhiều trong lập trình game, vì khi xây dựng nhân vật cho game chúng ta cần phát triển nhiều hành vi và cập nhật chúng từng ngày nên việc áp dụng Strategy là một giải pháp hữu hiệu cho việc xây dựng và phát triển về sau.
+Cụ thể hơn khi  bắt xây dựng một game cổ trang ta xây dựng nhân vật với hai hành vi là chạy và nhảy nên ta xây dựng một abstract Nhân vật với hai phương thức là go và jump.
+
+![image](https://user-images.githubusercontent.com/65171477/169545896-79b7fa4d-d7c7-4c54-a0fc-aab85740070e.png)
+
+  Phương thức go() sẽ in ra màn hình “Đang chạy”, và jump() sẽ in ra “Đang nhảy”. Sau đó chúng ta sẽ tạo lớp SonTinh kế thừa từ nhân vật. Tới lúc này chương trình của chúng ta vẫn hoạt động ổn định.
+  
+  ![image](https://user-images.githubusercontent.com/65171477/169546046-0431b9e0-68e9-491a-b6c4-35b1d2bff53d.png)
+
+Tuy nhiên, sau một thời gian phát triển chúng ta cần bổ sung thêm nhân vật mới là Thủy Tinh. Lớp ThuyTinh sẽ được tạo ra và kế thừa lớp nhân vật. Tuy nhiên, chúng ta nhận thấy có một vấn đề không ổn đã xảy ra. Bởi vì Thủy Tinh sống dưới nước nên nhân vật này không thể chạy và nhảy, mà thay vào đó là bơi và lặn. Nếu chúng ta thay đổi ở trong lớp abstract nhân vật thì lại làm ảnh hưởng đến hành vi của Sơn Tinh. 
+
+Lúc này chúng ta suy nghĩ tới việc, làm sao để tránh được việc thay đổi ở các lớp con, nếu không sẽ phải thay đổi code ở rất nhiều file để cập nhật được yêu cầu của khách hàng. Giải pháp sử dụng kế thừa đã không còn hiệu quả. 
+
+Thay vì sử dụng mối quan hệ “is a”, có nghĩ là lớp ThuyTinh sẽ kế thừa mọi thứ từ lớp nhân vật thì chúng ta hãy dùng “has -a”. Khi chuyển sang “has - a” thì đối tượng ThuyTinh sẽ có một “has -a” cách để go hoặc jump, đã được đóng gói vào đối tượng. ThuyTinh có hành vi di chuyển khác nên cũng đã được đóng gói vào đối tượng cách di chuyển khác. Tương tự như vậy từng đối tượng sẽ có một hành vi khác nhau.
+
+Đầu tiên chúng ta sẽ tạo một interface cho 2 phương thức là go() và jump().\
+
+![image](https://user-images.githubusercontent.com/65171477/169546177-b0aaaf2d-5a55-44f7-b6ba-bb8a32295897.png)
+
+Sau đó, tiến hành tạo các lớp cụ thể cho từng thuật toán. Đối với SonTinh thì phương thức go() và jump() sẽ thực hiện như sau
+
+![image](https://user-images.githubusercontent.com/65171477/169546336-97acaee2-6c8e-4f4a-92f8-f47a980c8b8b.png)
+
+Bên cạnh đó nhân vật ThuyTinh cũng xây dựng phương thức go() là bơi và jump() là lặn.
+
+![image](https://user-images.githubusercontent.com/65171477/169546389-3568c2be-4683-4b76-885b-cc9eaaae87e4.png)
+
+Việc tách rời phương thức xử lý ra khỏi lớp cụ thể coi như đã được giải quyết. Kế tiếp chúng ta cần lưu trữ đối tượng. Điều này sẽ được thực hiện trong lớp NhanVat bên dưới. Phương thức BehaviorContext sẽ quyết định thuật toán mà chúng ta muốn dùng. 
+
+![image](https://user-images.githubusercontent.com/65171477/169546429-e7585482-a8e4-458d-9de0-9d8cc20f5f66.png)
+
+Khi chúng ta cần khởi tạo nhân vật, thì chỉ cần gọi phương thức BehaviorContext với đối tượng mà chúng ta cần dùng.
+
+![image](https://user-images.githubusercontent.com/65171477/169546474-1cbaeb0c-b1ac-4590-aa8e-94fa4a171627.png)
+
+Kết quả output đầu ra đã giải quyết được vấn đề ban đầu.
+
+![image](https://user-images.githubusercontent.com/65171477/169546499-13d52450-a0e6-41ab-9a04-e53dfc5202de.png)
+
+ - *Factory method*
+
+  Factory Pattern là một mẫu thiết kết thuộc nhóm khởi tạo, nó được sử dụng rộng rãi trong JDK và các Framework như Spring, Struts. Factory Pattern được sử dụng khi có một class cha (super class) với nhiều class con (sub-class), dựa trên đầu vào và phải trả về 1 trong những class con đó. Trong quá trình phát triển ứng dụng, để tiện lợi cho việc cập nhật thêm nhiều tình năng mà không cần sửa code một cách khó khăn và phức tạp thì Factory Method là một giải pháp hiệu quả. Với Factory Method khi cần cập nhật tính năng mới thì ta chỉ cận thêm phần tính năng này mà không cần sửa toàn bộ code. 
+
+  Giả sử chúng ta đang xây dựng ứng dụng thương mại điện tử. Ban đầu chúng ta chỉ ký kết được với Bưu điện để có thể vận chuyển hàng theo hình thức là COD. Tuy nhiên sau một thời gian hoạt động, ứng dụng này phát triển thêm dịch vụ giao hàng hỏa tốc trong 2h do công ty Grab vận chuyển. Thiết kế ban đầu của ứng dụng chỉ có hình thức giao hàng COD nên phần code đã gắn chặt với loại hình này. Nếu chúng ta sửa đổi lại code cũ để đáp ứng đề bài là quá khó, vì trong tương lai nếu như có thêm hình thức vận chuyển giác thì code sẽ càng phức tạp đi rất nhiều.
+  
+  Đối với đề bài trên, Factory Method là một sự lựa chọn tối ưu, vì pattern sẽ thay thế việc khởi tạo đối tượng trong constructor bằng từ new object bằng việc gọi một phương thức ở factory. Chúng ta sẽ xây dựng một interface VanChuyen với phương thức getTHVanChuyen().
+  
+  ![image](https://user-images.githubusercontent.com/65171477/169546979-81aaef55-b041-4416-b499-186f7d10b01a.png)
+  
+  Sau đó lần lượt tạo các lớp con là VNPost và Grab. 
+
+![image](https://user-images.githubusercontent.com/65171477/169547043-bb5a9eec-2946-4ef4-85f6-194988db026f.png)
+![image](https://user-images.githubusercontent.com/65171477/169547062-72242aa9-b3dc-4344-bebd-8ee64bc6d2dd.png)
+
+  Tiến hành tạo lớp VanChuyenFactory, đây là lớp đóng vai trò để tạo đối tượng cho các lớp cụ thể dựa vào dữ liệu đầu vào.
+  
+  ![image](https://user-images.githubusercontent.com/65171477/169548109-d3836b6f-aeaa-4345-8ba2-0ba31c0a2bb8.png)
+
+Cuối cùng, chúng ta thử demo chương trình.
+
+![image](https://user-images.githubusercontent.com/65171477/169548178-369169c4-1f42-4731-b3a5-4ed8e40361cd.png)
+
+Kết quả nhận được hoàn toàn phù hợp với đề bài.
+
+![image](https://user-images.githubusercontent.com/65171477/169548251-bed6cfbc-3bbe-41ae-8375-941e8c638b44.png)
+
+- * Adapter*
+
+  Bài toán: Giả sử bạn ĐÃ CÓ một hệ thống phần mềm mà bạn cần làm việc với framework từ một nhà cung cấp mới, những nhà cung cấp mới đã thiết kế giao diện của họ khác với nhà cung cấp trước đó (Hệ thống phần mềm của bạn chỉ làm việc được với giao diện của nhà cung cấp trước đó).
+  
+  ![image](https://user-images.githubusercontent.com/65171477/169548320-c1f653a0-f01e-4ae3-bb25-a93f2a9be748.png)
+
+  Ta có thể giải quyết vấn đề bằng cách thay đổi toàn bộ code hiện tại của mình (tuy nhiên cách này không khả thi và có thể tốn rất nhiều thời gian, chi phí,…). Vậy ta sẽ làm thế nào nếu không thể thay giao diện của nhà cung cấp hiện tại và thay đổi hệ thống của mình? => Lúc này chính là lúc ta cần đến Adapter Pattern. Để giải quyết vấn đề trên ta có thể sẽ cần một lớp chuyển interface từ nhà cung cấp mới thành interface mà nó “fit” với hệ thống của chúng ta.
+
+![image](https://user-images.githubusercontent.com/65171477/169548378-5a0c079f-060b-42c0-bb63-ee6491141ceb.png)
+
+  Adapter này hoạt động như người trung gian bằng cách nhận các yêu cầu từ client (hệ thống của bạn) và chuyển đổi chúng thành các yêu cầu có ý nghĩa đối với các lớp của nhà cung cấp mới.
+  
+  ![image](https://user-images.githubusercontent.com/65171477/169548413-2edf3ddb-2eed-4267-9099-d7c6bdafab2b.png)
+
+Phân tích ví dụ: Ví dụ ta có 2 interface là Duck và Turkey
+
+Bên dưới là interface của Duck:
+
+Ở đây, một lớp con của Duck là MallardDuck:
+
+![image](https://user-images.githubusercontent.com/65171477/169548506-9b5e7263-b95a-4173-b992-e33975889e00.png)
+
+![image](https://user-images.githubusercontent.com/65171477/169548462-d0c4ed0e-1874-4198-8547-04ab9dafc2e9.png)
+
+  Ta cũng sẽ có những chú gà tây:
+  
+  ![image](https://user-images.githubusercontent.com/65171477/169548861-757d75a8-45b8-4e6b-8152-b6a50da278e1.png)
+
+  ![image](https://user-images.githubusercontent.com/65171477/169548879-e428725f-0132-47a6-87bb-e3bf7de8dfa2.png)
+  
+  Bây giờ, giả sử ta thiếu các đối tượng Duck và muốn sử dụng Turkey (Gà tây) thay thế. Hiện tại thì ta chưa thể sử dụng được Turkey thay cho Duck bởi vì chúng có interface khác nhau (Duck có 2 phương thức là quack và fly nhưng Turkey thì lại là gobble và fly). Vậy làm thế nào để sử dụng được Turkey?
+  
+  Lúc này ta sẽ sử dụng Adapter Pattern để viết một bộ chuyển đổi Adapter cho phép thực hiện việc này:
+  
+  ![image](https://user-images.githubusercontent.com/65171477/169548953-6c30ddbd-0323-49c4-8db6-435ea0b47df0.png)
+
+
+  Ta cũng có thể thực hiện việc chuyển đổi ngược lại từ Duck thành Turkey:
+  
+  ![image](https://user-images.githubusercontent.com/65171477/169549033-7a0b3eae-fc71-4c40-a9a7-3ba6f9393200.png)
+
 
 # Chương 2: Cơ sở lý thuyết
 
@@ -247,6 +397,23 @@ Giải pháp được đề xuất ở đây là thay thế việc khởi tạo 
 
 
 ### 3.3. **Kết quả thực tế**
+
+Một số hình ảnh minh họa demo đã được thực hiện:
+
+   ![image](https://user-images.githubusercontent.com/65171477/169543339-40697d34-7c04-4a54-8b7d-66d2f091abe1.png)
+ 
+-> Trang chủ
+
+  ![image](https://user-images.githubusercontent.com/65171477/169543489-14f7d10a-f241-4ab7-b07b-a09fd379e57a.png)
+
+-> Danh sách sản phẩm
+
+![image](https://user-images.githubusercontent.com/65171477/169543578-38237bf7-3404-4755-9d0c-4aac938ea6f4.png)
+
+
+-> Chi tiết sản phẩm
+
+![image](https://user-images.githubusercontent.com/65171477/169543634-8f1522e1-f17a-46b3-b46f-96be62724b5f.png)
 
 # Chương 4 - Kết luận
 ### Hướng dẫn chạy code
