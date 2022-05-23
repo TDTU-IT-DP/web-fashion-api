@@ -1,4 +1,7 @@
-# Chương 1: Mở đầu
+  ![image](https://user-images.githubusercontent.com/65171477/169745611-3f90dddf-7fa9-46c0-a429-824fe372074e.png)
+
+
+# Chương 1: Mở đầu 
 
 
 ### 1. **Giới thiệu ứng dụng**
