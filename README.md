@@ -1,9 +1,73 @@
-  ![image](https://user-images.githubusercontent.com/65171477/169745611-3f90dddf-7fa9-46c0-a429-824fe372074e.png)
+<div align="center">
+<h3> TỔNG LIÊN ĐOÀN LAO ĐỘNG VIỆT NAM </h3>
+<h3> TRƯỜNG ĐẠI HỌC TÔN ĐỨC THẮNG </h3>
+<h3> KHOA CÔNG NGHỆ THÔNG TIN </h3>
+  
+![image](https://user-images.githubusercontent.com/80830264/169096132-bc4e6152-a77c-4612-b73d-81d4104ba950.png)
+  <br>
+  <br>
+  <br>
+  <h3> TIỂU LUẬN GIỮA KÌ MÔN DESIGN PATTERN </h3>
+  <h2> Ứng dụng mẫu thiết kế vào xây dựng cửa hàng thời trang trực tuyến </h2>
+  <br>
+</div>
+<div align="right">
+  <br>
+  <br>
+  <br>
+  <h3> <i> Người hướng dẫn </i>: Thầy ĐẶNG HUỲNH TRUNG TÍN </h3>
+  <h3>
+   <i> Người thực hiện </i>:  <b> HUỲNH CÔNG KHANH – 51900114 </b> </h3>
+  
+  <h3> NGUYỄN NHẬT LINH– 51900124 </h3>
+ <h3>  NGUYỄN TRẦN BẢO VY– 51900289 </h3>
+ <h3> TRẦN NGUYÊN KHANG– 51900112 </h3>
+ <h3> Lớp       :    19050202 </h3>
+
+ <h3> Khoá     :    23
+  </h3>
+  </div>
+  <div  align="center">
+  <h3> THÀNH PHỐ HỒ CHÍ MINH, NĂM 2022  </h3>
+  <br>
+  <h3> LỜI CẢM ƠN </h3>
+</div>
+<div style="text-indent: 30px">
+  Trước tiên, nhóm xin gửi lời cảm ơn chân thành đến thầy Đặng Huỳnh Trung Tín. Thầy là người trực tiếp giảng dạy trên lớp và là người hướng dẫn để chúng em có thể hoàn thành được đề tài “Ứng dụng mẫu thiết kế vào xây dựng cửa hàng thời trang trực tuyến”.
+Tiếp theo, nhóm xin gửi lời cảm ơn đến khoa Công Nghệ Thông Tin trường Đại học Tôn Đức Thắng vì đã tạo điều kiện cho chúng em được học tập và nghiên cứu môn học này. Khoa đã tạo điều kiện và cung cấp các tài liệu liên quan cũng như hỗ trợ chúng em trong quá trình nghiên cứu đề tài.
+Cuối cùng, sau khoảng thời gian học tập trên lớp chúng em đã hoàn tất đề tài nghiên cứu dựa vào những hướng dẫn từ quý thầy cô của khoa Công Nghệ Thông Tin và thầy Đặng Huỳnh Trung Tín nói riêng. Hơn nữa, nhờ những góp ý từ thầy cô và các bạn học nhóm sẽ cố gắng hoàn thành tốt hơn nữa những bài nghiên cứu trong tương lai.
+Nhóm mong Quý thầy cô và các bạn bè trong lớp luôn tràn đầy sức khỏe và sự bình an.
+<br>
+  <br>
+ </div>
+
+# MỤC LỤC
+### [1. Giới thiệu ứng dụng](#I)  
+
+### [2. Vấn đề đặt ra khi không áp dụng Design Pattern vào ứng dụng](#II)  
+
+### [3. Singleton](#III)
+
+### [4.Strategy](#IV)
+
+### [5. Factory](#V)
+
+### [6. Adapter](#VI)
+
+### [7. Triển khai ứng dụng (lí do chọn pattern)](#VII)
+
+### [8. Sơ đồ lớp](#VIII)
+
+### [9. Kết quả thực tế](#IX)
+
+### [10. Hướng dẫn chạy code cách cài đặt](#X)
+
+
 
 
 # Chương 1: Mở đầu 
 
-
+<a name = "I"></a>
 ### 1. **Giới thiệu ứng dụng**
 
   Đề tài tập trung xây dựng một website quản lí cửa hàng thời trang online, hệ thống được sử dụng nhằm mục đích tạo một trang web mua sắm các mặt hàng thời trang như giày, dép, trang sức,…để phục vụ cho khách hàng. Ngoài ra hệ thống còn có khả năng cung cấp các chức năng quản lí dành cho chủ cửa hàng. Hệ thống đáp ứng đầy đủ các chức năng cơ bản của một website bán hàng là mua sản phẩm, đặt hàng, thêm hàng vào giỏ, thanh toán và các chức năng quản lí tài khoản, quản lí sản phẩm,…
@@ -11,7 +75,7 @@ Website được viết bằng ASP.NET Core Web API (C#) sử dụng .NET Framew
 
 
 
-
+<a name = "II"></a>
 ### 2. **Các vấn đề nếu không áp dụng pattern**
 
   - *Singleton*
@@ -161,7 +225,7 @@ Bên dưới là interface của Duck:
 
 
 
-
+<a name = "III"></a>
 ### 1. **Singleton**
 
 
@@ -239,7 +303,8 @@ Singleton Pattern là một design pattern:
   -	Singleton là toàn cục. Vì vậy, khi đơn giản là muốn truyền một đối tượng A cho đối tượng B xử lý, hãy cân nhắc xem bạn có thật sự cần một đối tượng toàn cục hay không. Giống như thời trang vậy, che bao nhiêu, khoe bao nhiêu, bạn phải tự tìm lấy một điểm cân bằng.
 
   -	Thận trọng với đa luồng (multithreading). Hai luồng khác nhau có thể gọi phương thức khởi tạo ở cùng một thời điểm và sinh ra hai thể hiện. Trong khi đó, đồng bộ (synchronized) phương thức khởi tạo lại ảnh hưởng tới hiệu suất.
-
+  -	
+<a name = "IV"></a>
 ### 2. **Strategy pattern**
 2.1.* Strategy Pattern là gì?*
   Là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern), Strategy Pattern  cho phép định nghĩa tập hợp các thuật toán, đóng gói từng thuật toán lại, và dễ dàng thay đổi linh hoạt các thuật toán bên trong object. Strategy cho phép thuật toán biến đổi độc lập khi người dùng sử dụng chúng.
@@ -262,6 +327,8 @@ Singleton Pattern là một design pattern:
   **Nhược điểm:**
   - Không phù hợp với chương trình chỉ có một vài thuật toán mà chúng hiếm khi thay đổi.
   - Client phải tìm hiểu khác nhau giữa các Concrete để có thể chọn được phù hợp nhất.
+ 
+<a name = "V"></a>
 ### 3.**Factory?**
 
 3.1. *Factory Method là gì ?*
@@ -296,6 +363,7 @@ Giải pháp được đề xuất ở đây là thay thế việc khởi tạo 
   **Nhược điểm**
   - Code sẽ trở nên phức tạp khi có quá nhiều class con để triển khai pattern
 
+<a name = "VI"></a>
 ### 4.**Adapter**
 
 4.1. *Adapter pattern là gì ?*
@@ -338,6 +406,7 @@ Giải pháp được đề xuất ở đây là thay thế việc khởi tạo 
   - Khi cần đảm bảo nguyên tắc Open/ Close trong một ứng dụng.
 
 # Chương 3: Triển khai ứng dụng
+<a name = "VII"></a>
 ### 3.1. **Ứng dụng các pattern (Lý do chọn pattern)**
    3.1.1.*Singleton*
    
@@ -380,6 +449,7 @@ Giải pháp được đề xuất ở đây là thay thế việc khởi tạo 
    Ở User : Có cột id và không có có cột ConfirmPassword
     Nhiệm vụ của Adapter Method là chuyển đổi đối tượng RegisterData trở thành đối tượng User để đảm bảo rằng đối tượng RegisterData từ người dùng gửi lên vẫn được xử lí
 
+<a name = "VIII"></a>
 ### 3.2. **Sơ đồ lớp**
 
   3.2.1. *Singleton*
@@ -398,7 +468,7 @@ Giải pháp được đề xuất ở đây là thay thế việc khởi tạo 
 
   ![image](https://user-images.githubusercontent.com/65171477/168467168-bcd23158-0a04-46a0-982c-e9e8b888a830.png)
 
-
+<a name = "IX"></a>
 ### 3.3. **Kết quả thực tế**
 
 Một số hình ảnh minh họa demo đã được thực hiện:
@@ -419,6 +489,7 @@ Một số hình ảnh minh họa demo đã được thực hiện:
 ![image](https://user-images.githubusercontent.com/65171477/169543634-8f1522e1-f17a-46b3-b46f-96be62724b5f.png)
 
 # Chương 4 - Kết luận
+<a name = "X"></a>
 ### Hướng dẫn chạy code
    *Khởi chạy server:*
    - Mở Visual Studio 2022 chọn clone project về
