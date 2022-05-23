@@ -30,44 +30,41 @@
   <div  align="center">
   <h3> THÀNH PHỐ HỒ CHÍ MINH, NĂM 2022  </h3>
   <br>
-  <h3> LỜI CẢM ƠN </h3>
 </div>
-<div style="text-indent: 30px">
+
+  <h3 align="center"> LỜI CẢM ƠN </h3>
   Trước tiên, nhóm xin gửi lời cảm ơn chân thành đến thầy Đặng Huỳnh Trung Tín. Thầy là người trực tiếp giảng dạy trên lớp và là người hướng dẫn để chúng em có thể hoàn thành được đề tài “Ứng dụng mẫu thiết kế vào xây dựng cửa hàng thời trang trực tuyến”.
 Tiếp theo, nhóm xin gửi lời cảm ơn đến khoa Công Nghệ Thông Tin trường Đại học Tôn Đức Thắng vì đã tạo điều kiện cho chúng em được học tập và nghiên cứu môn học này. Khoa đã tạo điều kiện và cung cấp các tài liệu liên quan cũng như hỗ trợ chúng em trong quá trình nghiên cứu đề tài.
 Cuối cùng, sau khoảng thời gian học tập trên lớp chúng em đã hoàn tất đề tài nghiên cứu dựa vào những hướng dẫn từ quý thầy cô của khoa Công Nghệ Thông Tin và thầy Đặng Huỳnh Trung Tín nói riêng. Hơn nữa, nhờ những góp ý từ thầy cô và các bạn học nhóm sẽ cố gắng hoàn thành tốt hơn nữa những bài nghiên cứu trong tương lai.
 Nhóm mong Quý thầy cô và các bạn bè trong lớp luôn tràn đầy sức khỏe và sự bình an.
-<br>
-  <br>
- </div>
 
-# MỤC LỤC
-### [1. Giới thiệu ứng dụng](#I)  
+# Mục lục
+I. [Mở đầu](#I)<br>
+ &emsp; 1.[Giới thiệu ứng dụng](#1)<br>
+ &emsp; 2.[Các vấn đề nếu không áp dụng pattern](#2)<br>
+II. [Cơ sở lý thuyết](#II)<br>
+ &emsp; 1.[Singleton](#3)<br>
+ &emsp; 2.[Strategy](#4)<br>
+ &emsp; 3.[Factory](#5)<br>
+ &emsp; 4.[Adapter](#6)<br>
+III.[Triển khai ứng dụng](#III)<br>
+ &emsp; 1. [Ứng dụng các pattern (Lý do chọn pattern)](#7)<br>
+  &emsp;&emsp; 1.[Singleton](#8)<br>
+  &emsp;&emsp; 2.[Strategy](#9)<br>
+  &emsp;&emsp; 3.[Factory](#10)<br>
+  &emsp;&emsp; 4.[Adapter](#11)<br>
+  &emsp; 2.[Sơ đồ lớp](#12)<br>
+  &emsp; 3.[Kết quả thực tế](#13)<br>
+IV.[Kết Luận](#IV)<br>
+  &emsp; 1.[Hướng dẫn chạy code](#14)<br>
 
-### [2. Vấn đề đặt ra khi không áp dụng Design Pattern vào ứng dụng](#II)  
+  
 
-### [3. Singleton](#III)
-
-### [4.Strategy](#IV)
-
-### [5. Factory](#V)
-
-### [6. Adapter](#VI)
-
-### [7. Triển khai ứng dụng (lí do chọn pattern)](#VII)
-
-### [8. Sơ đồ lớp](#VIII)
-
-### [9. Kết quả thực tế](#IX)
-
-### [10. Hướng dẫn chạy code cách cài đặt](#X)
-
-
-
-
-# Chương 1: Mở đầu 
 
 <a name = "I"></a>
+# Chương 1: Mở đầu 
+
+<a name = "1"></a>
 ### 1. **Giới thiệu ứng dụng**
 
   Đề tài tập trung xây dựng một website quản lí cửa hàng thời trang online, hệ thống được sử dụng nhằm mục đích tạo một trang web mua sắm các mặt hàng thời trang như giày, dép, trang sức,…để phục vụ cho khách hàng. Ngoài ra hệ thống còn có khả năng cung cấp các chức năng quản lí dành cho chủ cửa hàng. Hệ thống đáp ứng đầy đủ các chức năng cơ bản của một website bán hàng là mua sản phẩm, đặt hàng, thêm hàng vào giỏ, thanh toán và các chức năng quản lí tài khoản, quản lí sản phẩm,…
@@ -75,7 +72,7 @@ Website được viết bằng ASP.NET Core Web API (C#) sử dụng .NET Framew
 
 
 
-<a name = "II"></a>
+<a name = "2"></a>
 ### 2. **Các vấn đề nếu không áp dụng pattern**
 
   - *Singleton*
@@ -220,12 +217,12 @@ Bên dưới là interface của Duck:
   
   ![image](https://user-images.githubusercontent.com/65171477/169549033-7a0b3eae-fc71-4c40-a9a7-3ba6f9393200.png)
 
-
+<a name = "II"></a>
 # Chương 2: Cơ sở lý thuyết
 
 
 
-<a name = "III"></a>
+<a name = "3"></a>
 ### 1. **Singleton**
 
 
@@ -304,7 +301,7 @@ Singleton Pattern là một design pattern:
 
   -	Thận trọng với đa luồng (multithreading). Hai luồng khác nhau có thể gọi phương thức khởi tạo ở cùng một thời điểm và sinh ra hai thể hiện. Trong khi đó, đồng bộ (synchronized) phương thức khởi tạo lại ảnh hưởng tới hiệu suất.
   -	
-<a name = "IV"></a>
+<a name = "4"></a>
 ### 2. **Strategy pattern**
 2.1.* Strategy Pattern là gì?*
   Là một trong những Pattern thuộc nhóm hành vi (Behavior Pattern), Strategy Pattern  cho phép định nghĩa tập hợp các thuật toán, đóng gói từng thuật toán lại, và dễ dàng thay đổi linh hoạt các thuật toán bên trong object. Strategy cho phép thuật toán biến đổi độc lập khi người dùng sử dụng chúng.
@@ -328,7 +325,7 @@ Singleton Pattern là một design pattern:
   - Không phù hợp với chương trình chỉ có một vài thuật toán mà chúng hiếm khi thay đổi.
   - Client phải tìm hiểu khác nhau giữa các Concrete để có thể chọn được phù hợp nhất.
  
-<a name = "V"></a>
+<a name = "5"></a>
 ### 3.**Factory?**
 
 3.1. *Factory Method là gì ?*
@@ -363,7 +360,7 @@ Giải pháp được đề xuất ở đây là thay thế việc khởi tạo 
   **Nhược điểm**
   - Code sẽ trở nên phức tạp khi có quá nhiều class con để triển khai pattern
 
-<a name = "VI"></a>
+<a name = "6"></a>
 ### 4.**Adapter**
 
 4.1. *Adapter pattern là gì ?*
@@ -405,17 +402,19 @@ Giải pháp được đề xuất ở đây là thay thế việc khởi tạo 
 
   - Khi cần đảm bảo nguyên tắc Open/ Close trong một ứng dụng.
 
+<a name = "III"></a>
 # Chương 3: Triển khai ứng dụng
-<a name = "VII"></a>
+<a name = "7"></a>
 ### 3.1. **Ứng dụng các pattern (Lý do chọn pattern)**
+<a name = "8"></a>
    3.1.1.*Singleton*
    
    Tránh tạo quá nhiều thực thể kết nối đến database. Do đó Singleton Pattern áp dụng vào đây thì hợp lý, tất cả chức năng nên sử dụng chung một thực thể kết nối.
-   
+   <a name = "9"></a>
    3.1.2.*Strategy*
    
    Vì trong ứng dụng có các hành vi như thêm , sửa , xóa , và lấy dữ liệu của người dùng và cả sản phẩm. Cả hai đối tượng người dùng đều có các hành vi trên những việc xử lý logic trong thời gian chạy  thì khác nhau. Nhằm mục đích đóng gói các phương thức trên để tiện sử dụng và chỉnh sửa trong tương lai vì những hành vì này thường rất dễ thay đổi trong quá trình phát triển. Nên dùng Strategy Method ở đây là hợp lý.
-   
+   <a name = "10"></a>
    3.1.3. *Factory*
    
   - Khi muốn xác thực dữ liệu khi chưa biết trước tất cả các loại dữ liệu sẽ được xác thực. Để khi mở rộng sau này không cần phải thay đổi code khi thêm các loại dữ liệu cần xác thực khác.
@@ -429,7 +428,7 @@ Giải pháp được đề xuất ở đây là thay thế việc khởi tạo 
   Ví dụ về chức năng đăng kí tài khoản:
  
    Ban đầu chỉ cần xác thực 2 thông tin email và số điện thoại. Nhưng sau này khi mở rộng hệ thống ta có thể thêm một vài trường dữ liệu khác cần được xác thực như hình ảnh , CMND,... Thì ta không cần sửa code ban đầu mà chỉ cẩn bổ sung thêm các subclass ( ví dụ CMNDValidateFactory.cs …) cần dùng để xác thực và implement vào ValidateFactory method.
-    
+    <a name = "11"></a>
    3.1.4. *Adapter*
    
    Khi gửi dữ liệu từ phía client lên server thì dữ liệu cần được thêm vào chưa tương thích với database do khác định dạng dữ liệu. Vì vậy cần phải chuyển đổi dữ liệu về đúng định dạng dữ liệu trong database mới thêm vào được. Do có nhiều nơi cần phải chuyển đổi dữ liệu và để tránh mất thời gian chỉnh sửa từng nơi khi định dạng trong database thay đổi thì sử dụng Adapter method ở đây là hợp lí nhất.
@@ -449,7 +448,7 @@ Giải pháp được đề xuất ở đây là thay thế việc khởi tạo 
    Ở User : Có cột id và không có có cột ConfirmPassword
     Nhiệm vụ của Adapter Method là chuyển đổi đối tượng RegisterData trở thành đối tượng User để đảm bảo rằng đối tượng RegisterData từ người dùng gửi lên vẫn được xử lí
 
-<a name = "VIII"></a>
+<a name = "12"></a>
 ### 3.2. **Sơ đồ lớp**
 
   3.2.1. *Singleton*
@@ -468,7 +467,7 @@ Giải pháp được đề xuất ở đây là thay thế việc khởi tạo 
 
   ![image](https://user-images.githubusercontent.com/65171477/168467168-bcd23158-0a04-46a0-982c-e9e8b888a830.png)
 
-<a name = "IX"></a>
+<a name = "13"></a>
 ### 3.3. **Kết quả thực tế**
 
 Một số hình ảnh minh họa demo đã được thực hiện:
@@ -487,9 +486,9 @@ Một số hình ảnh minh họa demo đã được thực hiện:
 -> Chi tiết sản phẩm
 
 ![image](https://user-images.githubusercontent.com/65171477/169543634-8f1522e1-f17a-46b3-b46f-96be62724b5f.png)
-
+<a name = "IV"></a>
 # Chương 4 - Kết luận
-<a name = "X"></a>
+<a name = "14"></a>
 ### Hướng dẫn chạy code
    *Khởi chạy server:*
    - Mở Visual Studio 2022 chọn clone project về
