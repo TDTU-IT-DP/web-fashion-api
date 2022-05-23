@@ -500,6 +500,7 @@ Một số hình ảnh minh họa demo đã được thực hiện:
 
   *Giao diện tương tác với demo*
    - link: https://khanhpro1250.github.io/web-fashion/
+   - link video demo: https://youtu.be/utnIR90F5Bc
 ### Các api có trong demo
   *Cart Product*
   
