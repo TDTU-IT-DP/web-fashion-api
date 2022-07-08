@@ -18,11 +18,6 @@
   <h3> <i> Người hướng dẫn </i>: Thầy ĐẶNG HUỲNH TRUNG TÍN </h3>
   <h3>
    <i> Người thực hiện </i>:  <b> HUỲNH CÔNG KHANH – 51900114 </b> </h3>
-  
-  <h3> NGUYỄN NHẬT LINH– 51900124 </h3>
- <h3>  NGUYỄN TRẦN BẢO VY– 51900289 </h3>
- <h3> TRẦN NGUYÊN KHANG– 51900112 </h3>
- <h3> Lớp       :    19050202 </h3>
  <h3> 19050201 </h3>
  <h3> Khoá     :    23
   </h3>
